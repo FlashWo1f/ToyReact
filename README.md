@@ -8,4 +8,5 @@ npm i webpack webpack-cli -g
 <!-- 配置环境变量 -->
 webpack
 <!-- 生成 dist/main.js -->
+npm i @babel/plugin-transform-react-jsx -D
 ```

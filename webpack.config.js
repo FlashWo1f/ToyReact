@@ -12,7 +12,13 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             // presets
-            presets: ['@babel/preset-env']
+            presets: ['@babel/preset-env'],
+            plugins: [[
+              // 处理 jsx 语法 插件
+              '@babel/plugin-transform-react-jsx',
+              // 不加这一行 默认 用 React.createElement
+              { pragma: 'ToyReact.createElement' }
+            ]]
           }
         }
       }

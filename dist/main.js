@@ -86,15 +86,27 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./ToyReact.js":
+/*!*********************!*\
+  !*** ./ToyReact.js ***!
+  \*********************/
+/*! exports provided: ToyReact */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ToyReact\", function() { return ToyReact; });\nvar ToyReact = {\n  createElement: function createElement(type, attributes) {\n    var element = document.createElement(type);\n\n    for (var name in attributes) {\n      // element[name] = attributes[name]   wrong\n      element.setAttribute(name, attributes[name]);\n    }\n\n    for (var _len = arguments.length, children = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {\n      children[_key - 2] = arguments[_key];\n    }\n\n    for (var child in children) {}\n\n    return element;\n  }\n};\n\n//# sourceURL=webpack:///./ToyReact.js?");
+
+/***/ }),
+
 /***/ "./main.js":
 /*!*****************!*\
   !*** ./main.js ***!
   \*****************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-  //  在 webpack 路径的 main.js 中  用的一个 eval 作用域
-eval("console.log('ggeee');\n\n//# sourceURL=webpack:///./main.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ToyReact_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ToyReact.js */ \"./ToyReact.js\");\n\nvar a = _ToyReact_js__WEBPACK_IMPORTED_MODULE_0__[\"ToyReact\"].createElement(\"div\", {\n  name: \"a\"\n});\n/**\r\n * @编译\r\n */\n// var a = createElement(MyComponent, {\n//   name: 'a'\n// })\n\n//# sourceURL=webpack:///./main.js?");
 
 /***/ })
 
