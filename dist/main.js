@@ -94,7 +94,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ToyReact\", function() { return ToyReact; });\nvar ToyReact = {\n  createElement: function createElement(type, attributes) {\n    var element = document.createElement(type);\n\n    for (var name in attributes) {\n      // element[name] = attributes[name]   wrong\n      element.setAttribute(name, attributes[name]);\n    }\n\n    for (var _len = arguments.length, children = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {\n      children[_key - 2] = arguments[_key];\n    }\n\n    for (var child in children) {}\n\n    return element;\n  }\n};\n\n//# sourceURL=webpack:///./ToyReact.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ToyReact\", function() { return ToyReact; });\nvar ToyReact = {\n  createElement: function createElement(type, attributes) {\n    var element = document.createElement(type);\n\n    for (var name in attributes) {\n      // element[name] = attributes[name]   wrong\n      element.setAttribute(name, attributes[name]);\n    }\n\n    for (var _len = arguments.length, children = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {\n      children[_key - 2] = arguments[_key];\n    }\n\n    for (var _i = 0, _children = children; _i < _children.length; _i++) {\n      var child = _children[_i];\n\n      // 如果是纯文本就创建一个 createTextNode\n      if (typeof child === 'string') {\n        child = document.createTextNode(child);\n      }\n\n      element.appendChild(child);\n    }\n\n    return element;\n  }\n};\n\n//# sourceURL=webpack:///./ToyReact.js?");
 
 /***/ }),
 
@@ -106,7 +106,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ToyReact_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ToyReact.js */ \"./ToyReact.js\");\n\nvar a = _ToyReact_js__WEBPACK_IMPORTED_MODULE_0__[\"ToyReact\"].createElement(\"div\", {\n  name: \"a\"\n});\n/**\r\n * @编译\r\n */\n// var a = createElement(MyComponent, {\n//   name: 'a'\n// })\n\n//# sourceURL=webpack:///./main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ToyReact_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ToyReact.js */ \"./ToyReact.js\");\n\nvar a = _ToyReact_js__WEBPACK_IMPORTED_MODULE_0__[\"ToyReact\"].createElement(\"div\", {\n  name: \"a\",\n  id: \"spa\"\n}, _ToyReact_js__WEBPACK_IMPORTED_MODULE_0__[\"ToyReact\"].createElement(\"span\", null, \"hello\"), _ToyReact_js__WEBPACK_IMPORTED_MODULE_0__[\"ToyReact\"].createElement(\"span\", null, \"world\"), _ToyReact_js__WEBPACK_IMPORTED_MODULE_0__[\"ToyReact\"].createElement(\"span\", null, \"!\"));\nconsole.log('main.js;', a);\ndocument.body.appendChild(a);\n/**\r\n * @编译\r\n */\n// var a = _ToyReact_js__WEBPACK_IMPORTED_MODULE_0__[\"ToyReact\"].createElement(\"div\", {\n//   name: \"a\"\n// });\n\n//# sourceURL=webpack:///./main.js?");
 
 /***/ })
 

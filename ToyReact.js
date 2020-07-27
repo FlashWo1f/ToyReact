@@ -5,8 +5,12 @@ export let ToyReact = {
       // element[name] = attributes[name]   wrong
       element.setAttribute(name, attributes[name])
     }
-    for(let child in children) {
-
+    for(let child of children) {
+      // 如果是纯文本就创建一个 createTextNode
+      if (typeof child === 'string') {
+        child = document.createTextNode(child)
+      }
+      element.appendChild(child)
     }
     return element
   }
