@@ -1,4 +1,5 @@
 export let ToyReact = {
+  // 简单的 createElement
   createElement(type, attributes, ...children) {
     let element = document.createElement(type)
     for(let name in attributes) {
