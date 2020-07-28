@@ -56,17 +56,18 @@ export let ToyReact = {
     }
     const insertChildren = (children) => {
       for(let child of children) {
-        
         if (typeof child === 'object' && child instanceof Array) {
           insertChildren(child)
         } else {
             // 如果是纯文本就创建一个 createTextNode, feat: 不是Component 全部toString 处理  比如说 {true}
+            // 如果 下面三个类都不是的话 都转成字符去处理
           if (!(child instanceof Component) && !(child instanceof ElementWrapper) && !(child instanceof TextWrapper)) {
             child = String(child)
           }
           if (typeof child === 'string') {
             child = new TextWrapper(child)
           }
+          // 把children插入this.children
           element.appendChild(child)
         }
       }
