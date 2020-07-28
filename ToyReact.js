@@ -13,6 +13,16 @@ class ElementWrapper {
   }
 }
 
+export class Component {
+  setAttribute(name, value) {
+    this[name] = value
+  }
+  mountTo(parent) {
+    let vdom = this.render()
+    vdom.mountTo(parent)
+  }
+}
+
 class TextWrapper {
   constructor(content) {
     this.root = document.createTextNode(content)
