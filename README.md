@@ -40,3 +40,29 @@ console.log('main.js;', a);
 document.body.appendChild(a);
 */
 ```
+
+## createElement
+
+createElement 中用到什么，就在 ElementWrapper 等类中去实现什么， 这是一个相对应的关系
+
+## Component
+```js
+export class Component {
+  setAttribute(name, value) {
+    this[name] = value
+  }
+  mountTo(parent) {
+    let vdom = this.render()
+    vdom.mountTo(parent)
+  }
+}
+// 在 组件中 引入 Component 去 继承  把公共方法解耦出来
+```
+
+## 重要方法
+
+```
+setAttribute
+appendChild
+mountTo
+```

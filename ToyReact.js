@@ -14,12 +14,18 @@ class ElementWrapper {
 }
 
 export class Component {
+  constructor() {
+    this.children = []
+  }
   setAttribute(name, value) {
     this[name] = value
   }
   mountTo(parent) {
     let vdom = this.render()
     vdom.mountTo(parent)
+  }
+  appendChild(vchild) {
+    this.children.push(vchild)
   }
 }
 
@@ -48,13 +54,24 @@ export let ToyReact = {
       // element[name] = attributes[name]   wrong
       element.setAttribute(name, attributes[name])
     }
-    for(let child of children) {
-      // 如果是纯文本就创建一个 createTextNode
-      if (typeof child === 'string') {
-        child = new TextWrapper(child)
+    const insertChildren = (children) => {
+      for(let child of children) {
+        
+        if (typeof child === 'object' && child instanceof Array) {
+          insertChildren(child)
+        } else {
+            // 如果是纯文本就创建一个 createTextNode, feat: 不是Component 全部toString 处理  比如说 {true}
+          if (!(child instanceof Component) && !(child instanceof ElementWrapper) && !(child instanceof TextWrapper)) {
+            child = String(child)
+          }
+          if (typeof child === 'string') {
+            child = new TextWrapper(child)
+          }
+          element.appendChild(child)
+        }
       }
-      element.appendChild(child)
     }
+    insertChildren(children)
     return element
   },
   render(vdom, element) {

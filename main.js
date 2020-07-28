@@ -2,14 +2,17 @@ import { ToyReact, Component } from './ToyReact.js'
 
 class MyComponent extends Component {
   render() {
-    return <div><span>hello <span></span>world!</span></div>
+    return <div>
+      <div>{this.children}</div>
+      <div>{true}??</div>
+      <span>hello </span>
+      <span>world!</span>
+    </div>
   }
 }
 
 let a = <MyComponent name="a" id="spa">
-  {/* <span>hello</span>
-  <span>world</span>
-  <span>!</span> */}
+  <div>hahah</div>
 </MyComponent>
 // document.body.appendChild(a)
 ToyReact.render(
