@@ -3,6 +3,13 @@ class ElementWrapper {
     this.root = document.createElement(type)
   }
   setAttribute(name, value) {
+    if (name.match(/^on([\s\S]+)$/)) {
+      // RegExp.$1是RegExp的一个属性,指的是与正则表达式匹配的第一个 子匹配(以括号为标志)字符串
+      const event = RegExp.$1.replace(/^[\s\S]/, s => s.toLowerCase())
+      this.root.addEventListener(event, value)
+    }
+    if (name === 'className')
+      name = 'class'
     this.root.setAttribute(name, value)
   }
   appendChild(vchild) {
@@ -16,8 +23,11 @@ class ElementWrapper {
 export class Component {
   constructor() {
     this.children = []
+    // 用 Object.create(null) 创建出来的对象 比较干净  没有 原型 没有 那些 toString 的方法
+    this.props = Object.create(null)
   }
   setAttribute(name, value) {
+    this.props[name] = value
     this[name] = value
   }
   mountTo(parent) {
