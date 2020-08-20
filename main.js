@@ -3,16 +3,17 @@ import { ToyReact, Component } from './ToyReact.js'
 class MyComponent extends Component {
   render() {
     return <div>
-      <div>{this.children}</div>
       <div>{true}??</div>
       <span>hello </span>
+      <div>{this.children}</div>
       <span>world!</span>
     </div>
   }
 }
-
+// 1. 这里将jsx语法赋值给 a  => @babel/plugin-transform-react-jsx use ToyReact.createElement
 let a = <MyComponent name="a" id="spa">
   <div>hahah</div>
+  <div>hahah11</div>
 </MyComponent>
 // document.body.appendChild(a)
 ToyReact.render(

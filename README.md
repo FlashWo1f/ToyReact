@@ -66,3 +66,14 @@ setAttribute
 appendChild
 mountTo
 ```
+
+## 疑问
+
+1. 在MyComponent组件中,为什么先会去createElement MyComponent 的 Children 呢
+```jsx
+let a = <MyComponent name="a" id="spa">
+// 先 createElement 了这下面
+  <div>hahah</div>
+  <div>hahah11</div>
+</MyComponent>
+```

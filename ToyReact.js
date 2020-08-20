@@ -25,6 +25,7 @@ export class Component {
     vdom.mountTo(parent)
   }
   appendChild(vchild) {
+    console.log('append', vchild)
     this.children.push(vchild)
   }
 }
@@ -40,16 +41,20 @@ class TextWrapper {
 
 export let ToyReact = {
   // 简单的 createElement
+  // 2. 按照 MyComponent 的例子来说的话, MyComponent 标签内 标签 作为下面的children。
   createElement(type, attributes, ...children) {
+    console.log("children", type, attributes, children)
     let element
     if (typeof type === 'string') {
       // example: div span 他们的type会是'div' 'span'
       element = new ElementWrapper(type)
     } else {
       // 如果不是 那就是自定义组件 那么 new 本身即可
+      // 3. type: MyComponent, element = new MyComponent
       element = new type
     }
     // let element = document.createElement(type)
+    // 4. 将name="a" id="spa" 以 props 的形式传入 MyComponent( props 未实现 )
     for(let name in attributes) {
       // element[name] = attributes[name]   wrong
       element.setAttribute(name, attributes[name])
@@ -69,6 +74,7 @@ export let ToyReact = {
           }
           // 把children插入this.children
           element.appendChild(child)
+          console.log("ele", element)
         }
       }
     }
